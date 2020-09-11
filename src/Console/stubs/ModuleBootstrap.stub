@@ -1,0 +1,34 @@
+<?php
+
+namespace DummyNamespace;
+
+use Closure;
+use Encore\Admin\Facades\Admin;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
+class ModuleBootstrap
+{
+    /**
+     * Lazy bootstrap.
+     *
+     * @param Request $request
+     * @param Closure $next
+     *
+     * @return mixed
+     */
+    public function handle(Request $request, Closure $next)
+    {
+        $module = Str::of($request->route()->getActionName())->explode('\\')->get(1);
+
+        $filepath = app_path($module) . DIRECTORY_SEPARATOR . 'bootstrap.php';
+
+        if (file_exists($filepath)) {
+            config()->set('admin.bootstrap', $filepath);
+        }
+
+        Admin::bootstrap();
+
+        return $next($request);
+    }
+}

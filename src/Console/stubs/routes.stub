@@ -1,0 +1,14 @@
+<?php
+
+use Illuminate\Routing\Router;
+
+Route::group([
+    'prefix'        => config('admin.route.prefix'),
+    'namespace'     => 'DummyNamespace',
+    'middleware'    => config('admin.route.middleware'),
+    'as'            => config('admin.route.prefix') . '.DummyAs.',
+], function (Router $router) {
+    $router->get('/DummyAs', function() {
+        return 'DummyAs module';
+    });
+});

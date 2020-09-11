@@ -1,0 +1,30 @@
+{
+    "name": "an5dy\/laravel-admin-modules",
+    "description": "laravel-admin 模块创建扩展包",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "an5dy",
+            "email": "846562014@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "encore/laravel-admin": "~1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "An5dy\\LaravelAdminModules\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "An5dy\\LaravelAdminModules\\ModulesServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,40 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Support\ServiceProvider;
+
+class DummyClass extends ServiceProvider
+{
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        if (file_exists($routes = $this->routePath())) {
+            $this->loadRoutesFrom($routes);
+        }
+    }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return string
+     */
+    protected function routePath(): string
+    {
+        return app_path('DummyModule') . DIRECTORY_SEPARATOR . 'routes.php';
+    }
+}
