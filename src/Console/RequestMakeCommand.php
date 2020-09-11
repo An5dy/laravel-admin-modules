@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the an5dy/laravel-admin-menus.
+ *
+ * (c) an5dy <846562014@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace An5dy\LaravelAdminModules\Console;
 
 use Illuminate\Console\GeneratorCommand;
@@ -29,18 +37,14 @@ class RequestMakeCommand extends GeneratorCommand
 
     /**
      * Get the stub file for the generator.
-     *
-     * @return string
      */
     protected function getStub(): string
     {
-        return __DIR__ . '/stubs/request.stub';
+        return __DIR__.'/stubs/request.stub';
     }
 
     /**
      * Get the root namespace for the class.
-     *
-     * @return string
      */
     protected function rootNamespace(): string
     {
@@ -51,21 +55,21 @@ class RequestMakeCommand extends GeneratorCommand
      * Get the default namespace for the class.
      *
      * @param string $rootNamespace
-     * @return string
      */
     protected function getDefaultNamespace($rootNamespace): string
     {
-        return $rootNamespace . '\Requests';
+        return $rootNamespace.'\Requests';
     }
 
     /**
      * Get the destination class path.
      *
      * @param string $name
+     *
      * @return string
      */
     protected function getPath($name)
     {
-        return $this->laravel['path'] . '/' . str_replace('\\', '/', $name) . '.php';
+        return $this->laravel['path'].'/'.str_replace('\\', '/', $name).'.php';
     }
 }
