@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the an5dy/laravel-admin-menus.
+ *
+ * (c) an5dy <846562014@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace An5dy\LaravelAdminModules\Console;
 
 use Illuminate\Console\Command;
@@ -56,12 +64,12 @@ class ModuleBootstrapMakeCommand extends Command
      */
     protected function createBootstrapFile()
     {
-        $file = $this->directory . DIRECTORY_SEPARATOR . 'bootstrap.php';
+        $file = $this->directory.DIRECTORY_SEPARATOR.'bootstrap.php';
 
         $stub = $this->getStub('bootstrap');
         $this->laravel['files']->put($file, $stub);
 
-        $this->line('<info>Bootstrap file was created:</info> ' . str_replace(base_path(), '', $file));
+        $this->line('<info>Bootstrap file was created:</info> '.str_replace(base_path(), '', $file));
     }
 
     /**
@@ -73,7 +81,7 @@ class ModuleBootstrapMakeCommand extends Command
     {
         $this->makeDir('Middleware');
 
-        $file = $this->directory . DIRECTORY_SEPARATOR . 'Middleware' . DIRECTORY_SEPARATOR . 'ModuleBootstrap.php';
+        $file = $this->directory.DIRECTORY_SEPARATOR.'Middleware'.DIRECTORY_SEPARATOR.'ModuleBootstrap.php';
 
         $stub = str_replace([
             'DummyNamespace',
@@ -83,7 +91,7 @@ class ModuleBootstrapMakeCommand extends Command
 
         $this->laravel['files']->put($file, $stub);
 
-        $this->line('<info>Module bootstrap middleware file was created:</info> ' . str_replace(base_path(), '', $file));
+        $this->line('<info>Module bootstrap middleware file was created:</info> '.str_replace(base_path(), '', $file));
     }
 
     /**
@@ -105,7 +113,7 @@ class ModuleBootstrapMakeCommand extends Command
      */
     protected function getStub($name): string
     {
-        return $this->laravel['files']->get(__DIR__ . DIRECTORY_SEPARATOR . 'stubs' . DIRECTORY_SEPARATOR . $name . '.stub');
+        return $this->laravel['files']->get(__DIR__.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.$name.'.stub');
     }
 
     /**
@@ -115,6 +123,6 @@ class ModuleBootstrapMakeCommand extends Command
      */
     protected function makeDir($path = '')
     {
-        $this->laravel['files']->makeDirectory($this->directory . DIRECTORY_SEPARATOR . $path, 0755, true, true);
+        $this->laravel['files']->makeDirectory($this->directory.DIRECTORY_SEPARATOR.$path, 0755, true, true);
     }
 }

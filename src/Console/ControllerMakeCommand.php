@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the an5dy/laravel-admin-menus.
+ *
+ * (c) an5dy <846562014@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace An5dy\LaravelAdminModules\Console;
 
 use Illuminate\Console\Command;
@@ -81,21 +89,18 @@ class ControllerMakeCommand extends Command
      * Get controller name.
      *
      * @return string
+     *
      * @throws \ReflectionException
      */
     protected function getControllerName()
     {
         $name = (new \ReflectionClass(module_namespace($this->moduleName, 'Models', $this->modelName)))->getShortName();
 
-        return $name . 'Controller';
+        return $name.'Controller';
     }
 
     /**
      * Get name space.
-     *
-     * @param string $dir
-     *
-     * @return string
      */
     protected function getNameSpace(string $dir): string
     {
@@ -104,11 +109,9 @@ class ControllerMakeCommand extends Command
 
     /**
      * Get models name space.
-     *
-     * @return string
      */
-    protected function getModelsNameSpace():string
+    protected function getModelsNameSpace(): string
     {
-        return $this->getNameSpace('Models') . '\\' . $this->getModelName();
+        return $this->getNameSpace('Models').'\\'.$this->getModelName();
     }
 }
