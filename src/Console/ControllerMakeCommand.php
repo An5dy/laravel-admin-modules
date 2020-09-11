@@ -85,7 +85,7 @@ class ControllerMakeCommand extends Command
      */
     protected function getControllerName()
     {
-        $name = (new \ReflectionClass(module_namespace($this->moduleName, 'Models', $this->moduleName)))->getShortName();
+        $name = (new \ReflectionClass(module_namespace($this->moduleName, 'Models', $this->modelName)))->getShortName();
 
         return $name . 'Controller';
     }
