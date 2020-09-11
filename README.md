@@ -4,6 +4,10 @@
 
 ![StyleCI build status](https://github.styleci.io/repos/254318217/shield) 
 
+## 需求环境
+- PHP >= 7.0.0
+- laravel-admin >= 1.6
+
 ## 安装
 ```shell
 composer require an5dy/laravel-admin-modules --dev -vvv
