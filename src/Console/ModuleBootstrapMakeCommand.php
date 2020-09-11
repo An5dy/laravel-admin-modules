@@ -71,6 +71,8 @@ class ModuleBootstrapMakeCommand extends Command
      */
     protected function createModuleBootstrapMiddleware()
     {
+        $this->makeDir('Middleware');
+
         $file = $this->directory . DIRECTORY_SEPARATOR . 'Middleware' . DIRECTORY_SEPARATOR . 'ModuleBootstrap.php';
 
         $stub = str_replace([
@@ -104,5 +106,15 @@ class ModuleBootstrapMakeCommand extends Command
     protected function getStub($name): string
     {
         return $this->laravel['files']->get(__DIR__ . DIRECTORY_SEPARATOR . 'stubs' . DIRECTORY_SEPARATOR . $name . '.stub');
+    }
+
+    /**
+     * Make new directory.
+     *
+     * @param string $path
+     */
+    protected function makeDir($path = '')
+    {
+        $this->laravel['files']->makeDirectory($this->directory . DIRECTORY_SEPARATOR . $path, 0755, true, true);
     }
 }
