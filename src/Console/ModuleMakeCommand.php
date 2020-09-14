@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the an5dy/laravel-admin-menus.
+ *
+ * (c) an5dy <846562014@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace An5dy\LaravelAdminModules\Console;
 
 use Illuminate\Console\Command;
@@ -63,7 +71,7 @@ class ModuleMakeCommand extends Command
         }
 
         $this->makeDir(DIRECTORY_SEPARATOR);
-        $this->line('<info>Module directory was created:</info> ' . str_replace(base_path(), '', $this->directory));
+        $this->line('<info>Module directory was created:</info> '.str_replace(base_path(), '', $this->directory));
 
         $this->makeDir('Controllers');
         $this->makeDir('Models');
@@ -81,9 +89,9 @@ class ModuleMakeCommand extends Command
     {
         $this->makeDir('Providers');
 
-        $className = $this->moduleName . 'ServiceProvider';
+        $className = $this->moduleName.'ServiceProvider';
 
-        $file = $this->directory . DIRECTORY_SEPARATOR . 'Providers' . DIRECTORY_SEPARATOR . $className . '.php';
+        $file = $this->directory.DIRECTORY_SEPARATOR.'Providers'.DIRECTORY_SEPARATOR.$className.'.php';
 
         $stub = str_replace([
             'DummyNamespace',
@@ -97,7 +105,7 @@ class ModuleMakeCommand extends Command
 
         $this->laravel['files']->put($file, $stub);
 
-        $this->line('<info>Service provider file was created:</info> ' . str_replace(base_path(), '', $file));
+        $this->line('<info>Service provider file was created:</info> '.str_replace(base_path(), '', $file));
     }
 
     /**
@@ -107,7 +115,7 @@ class ModuleMakeCommand extends Command
      */
     protected function createRoutesFile()
     {
-        $file = $this->directory . DIRECTORY_SEPARATOR . 'routes.php';
+        $file = $this->directory.DIRECTORY_SEPARATOR.'routes.php';
 
         $stub = str_replace([
             'DummyAs',
@@ -116,12 +124,12 @@ class ModuleMakeCommand extends Command
         ], [
             Str::lower($this->moduleName),
             $this->moduleName,
-            module_namespace($this->moduleName, 'Controllers')
+            module_namespace($this->moduleName, 'Controllers'),
         ], $this->getStub('routes'));
 
         $this->laravel['files']->put($file, $stub);
 
-        $this->line('<info>Routes file was created:</info> ' . str_replace(base_path(), '', $file));
+        $this->line('<info>Routes file was created:</info> '.str_replace(base_path(), '', $file));
     }
 
     /**
@@ -143,7 +151,7 @@ class ModuleMakeCommand extends Command
      */
     protected function getStub($name): string
     {
-        return $this->laravel['files']->get(__DIR__ . DIRECTORY_SEPARATOR . 'stubs' . DIRECTORY_SEPARATOR . $name . '.stub');
+        return $this->laravel['files']->get(__DIR__.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.$name.'.stub');
     }
 
     /**
@@ -153,6 +161,6 @@ class ModuleMakeCommand extends Command
      */
     protected function makeDir($path = '')
     {
-        $this->laravel['files']->makeDirectory($this->directory . DIRECTORY_SEPARATOR . $path, 0755, true, true);
+        $this->laravel['files']->makeDirectory($this->directory.DIRECTORY_SEPARATOR.$path, 0755, true, true);
     }
 }

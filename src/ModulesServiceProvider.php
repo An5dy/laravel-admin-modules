@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the an5dy/laravel-admin-menus.
+ *
+ * (c) an5dy <846562014@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace An5dy\LaravelAdminModules;
 
 use Illuminate\Support\ServiceProvider;
